@@ -11,8 +11,7 @@ Autores do código:
 
 using namespace std;
 
-Atacante::Atacante(int tipo, float alt, float pes, int ida, int numRg, int vel, int fin, int dri) : Jogadores(tipo, alt, pes, ida, numRg){
-	this->tipoJogador = tipo;
+Atacante::Atacante(float alt, float pes, int ida, int numRg, int vel, int fin, int dri) : Jogadores(alt, pes, ida, numRg){
 	this->altura = alt;
 	this->idade = ida;
 	this->rg = numRg;
@@ -47,6 +46,16 @@ void Atacante::setDrible(int dri) {
 
 int Atacante::getHash(int max_number) const{
 	return rg % max_number;
+}
+
+void Atacante::print() {
+	cout << "Posicao: Atacante" << endl;
+	cout << "Altura.........: " << getAltura() << endl;
+	cout << "Peso...........: " << getPeso() << endl;
+	cout << "Idade..........: " << getIdade() << endl;
+	cout << "Velocidade.....: " << getVelocidade() << endl;
+	cout << "Finalizacao....: " << getFinalizacao() << endl;
+	cout << "Drible.........: " << getDrible() << endl;
 }
 
 Atacante::Atacante(const Atacante &obj) {

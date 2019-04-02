@@ -11,8 +11,7 @@ Autores do c�digo:
 
 using namespace std;
 
-Goleiro::Goleiro(int tipo, float alt, float pes, int ida, int numRg, int def, int ref, int sal) : Jogadores(tipo, alt, pes, ida, numRg) {
-	this->tipoJogador = tipo;
+Goleiro::Goleiro(float alt, float pes, int ida, int numRg, int def, int ref, int sal) : Jogadores(alt, pes, ida, numRg) {
 	this->altura = alt;
 	this->idade = ida;
 	this->rg = numRg;
@@ -46,14 +45,18 @@ void Goleiro::setSalto(int sal) {
 	this->salto = sal;
 }
 
-void Goleiro::print() {
-	Jogadores::print();
-	cout << "Defesa.: " << this->defesa << endl;
-	cout << "Reflexo: " << this->reflexo << endl;
-}
-
 int Goleiro::getHash(int max_number) const{
 	return rg % max_number;
+}
+
+void Goleiro::print() {
+	cout << "Posicao: Goleiro" << endl;
+	cout << "Altura..: " << getAltura() << endl;
+	cout << "Peso....: " << getPeso() << endl;
+	cout << "Idade...: " << getIdade() << endl;
+	cout << "Defesa..: " << getDefesa() << endl;
+	cout << "Reflexo.: " << getReflexo() << endl;
+	cout << "Salto...: " << getSalto() << endl;
 }
 
 Goleiro::Goleiro(const Goleiro &obj) {

@@ -44,12 +44,12 @@ class Hash {
   /*
     Insere o elemento na lista na posicao indicada pelo metodo getHash.
   */
-  void insertItem(Jogadores jogadores);
+  void insertItem(Jogadores *jogadores);
 
   /*
     Remove uma ocorrência de account na lista.
   */
-  void deleteItem(Jogadores jogadores);  
+  void deleteItem(Jogadores *jogadores);  
 
   /*
     Imprime todos os elementos que estão na lista, inclusive as

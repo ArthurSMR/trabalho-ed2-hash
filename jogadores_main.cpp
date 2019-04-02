@@ -14,34 +14,22 @@ Autores do c�digo:
 
 using namespace std;
 
-void printJogadores(Jogadores **jogador, int i) {
-	for (i = 0; i < 3; i++) {
-		cout << "\n";
-		cout << "Jogador " << i + 1 << endl;
-		cout << "Altura: " << jogador[i]->getAltura() << endl;
-		cout << "Peso..: " << jogador[i]->getPeso() << endl;
-		cout << "Idade.: " << jogador[i]->getIdade() << endl;
-		cout << "RG....: " << jogador[i]->getRg() << "\n" << endl;
-	}
-}
-
-void deleteJogadores(Jogadores **jogador, int i) {
-	for (i = 0; i < 3; i++) {
-		delete jogador[i];
-	}
-}
-
 int main() {
 	Hash hash;
-	hash.print();
-	Jogadores jogador;
+	Jogadores *jogadores;
+	Goleiro *goleiro;
+	Atacante *atacante;
 
 	int tipo, ida, numRg;
 	float alt, pes;
 
-	//for (int i = 0; i < 3; i++) {
+  cout << "LISTA:" << endl;
+	hash.print(); // mostrar hash vazia
+	cout << "------------------------------" << endl;
+	cout << "Inserir um jogador de cada tipo" << endl;
+	cout << "Tipo 1 = Goleiro\nTipo 2 = Atacante\nTipo 3 = Jogador sem posicao\n" << endl;
+	for (int i = 0; i < 3; i++) {
 
-		cout << "Tipo 1 = Goleiro\nTipo 2 = Atacante\nTipo 3 = Jogador sem posicao\n" << endl;
 		cout << "Tipo.......: ";
 		cin >> tipo;
 		cout << "Idade......: ";
@@ -63,7 +51,7 @@ int main() {
 			cin >> sal;
 			cout << "\n--------------------" << endl;
 
-			Goleiro goleiro = Goleiro(alt, pes, ida, numRg, def, ref, sal);
+			goleiro = new Goleiro(alt, pes, ida, numRg, def, ref, sal);
 			hash.insertItem(goleiro);
 		}
 		else if (tipo == 2) {	//Atacante
@@ -76,21 +64,34 @@ int main() {
 			cin >> dri;
 			cout << "\n--------------------" << endl;
 
-			Atacante atacante = Atacante(tipo, alt, pes, ida, numRg, vel, fin, dri);
+			atacante = new Atacante(alt, pes, ida, numRg, vel, fin, dri);
 			hash.insertItem(atacante);
 		}
-		else {					//Jogador normal
+		else {					//Jogador sem posicao definida
 			cout << "\n--------------------" << endl;
-			Jogadores jogadores = Jogadores(tipo, alt, pes, ida, numRg);
+			jogadores = new Jogadores(alt, pes, ida, numRg);
 			hash.insertItem(jogadores);
 		}
 
-	//}
+	}
 	
-	hash.print();
+
+  	cout << "LISTA:" << endl;
+	hash.print(); // Mostrar a lista com os elementos já na Hash
+	cout << "------------------------------" << endl;
 	cout << "------------------------------" << endl;
 	
-	//Jogadores jogadores()
+	//deletando os elementos da hash
+	hash.deleteItem(goleiro);
+	hash.deleteItem(atacante);
+	hash.deleteItem(jogadores);
+	
+    cout << "Jogadores deletados" << endl;
+	cout << "------------------------------" << endl;
+
+  	cout << "LISTA:" << endl;
+	hash.print();
+	cout << "------------------------------" << endl;
 
 	return 0;
 }

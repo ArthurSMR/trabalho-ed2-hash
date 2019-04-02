@@ -11,11 +11,7 @@ Autores do c�digo:
 
 using namespace std;
 
-Jogadores::Jogadores(int tipo, float alt, float pes, int ida, int numRg) : tipoJogador(tipo), altura(alt), peso(pes), idade(ida), rg(numRg) { }
-
-int Jogadores::getTipo() const {
-	return this->tipoJogador;
-}
+Jogadores::Jogadores(float alt, float pes, int ida, int numRg) : altura(alt), peso(pes), idade(ida), rg(numRg) { }
 
 float Jogadores::getAltura() const{
 	return this->altura;
@@ -58,9 +54,11 @@ void Jogadores::setRg(int numRg){
 
 
 void Jogadores::print() {
+	cout << "Jogador sem posicao definida" << endl;
 	cout << "Altura.: " << getAltura() << endl;
 	cout << "Peso...: " << getPeso() << endl;
 	cout << "Idade..: " << getIdade() << endl;
+	cout << "RG.....: " << getRg() << endl;
 }
 
 int Jogadores::getHash(int max_number) const{

@@ -37,16 +37,14 @@ void Hash::retrieveItem(Jogadores& jogadores, bool& found){
 /*
 A chamada da função invoca o copy constructor.
 */
-void Hash::insertItem(Jogadores jogadores){ 
-    int location = jogadores.getHash(MAX_ITEMS);
-    cadastro[location] = new Jogadores(jogadores);
+void Hash::insertItem(Jogadores *jogadores){ 
+    int location = jogadores->getHash(MAX_ITEMS);
+    cadastro[location] = jogadores;
     length++;
-    
-    //std::cout << "Inseriu" << "\n" << std::endl;
 }
 
-void Hash::deleteItem(Jogadores jogadores){
-    int location = jogadores.getHash(MAX_ITEMS);
+void Hash::deleteItem(Jogadores *jogadores){
+    int location = jogadores->getHash(MAX_ITEMS);
     delete cadastro[location];
     cadastro[location] = NULL;
     length--; 
@@ -55,21 +53,9 @@ void Hash::deleteItem(Jogadores jogadores){
 void Hash::print() const {
     std::cout << "INI" << std::endl;
     for (int i = 0; i < MAX_ITEMS; i++) {
-        Jogadores* acc = cadastro[i]; 
-        if (acc != NULL) { 
-            if (acc->getTipo() == 3){  //caso seja jogador sem posição definida
-            std::cout << "Jogador-> ";
-            std::cout << "Vetor " << i << ": " << acc->getIdade() <<", " <<acc->getAltura() <<", " <<acc->getPeso() << ", " << acc->getRg() << std::endl;
-            }
-            /*else if(acc->getTipo() == 1){  //caso seja goleiro
-                std::cout << "Goleiro: " << std::endl;
-                std::cout << i << ":" << acc->getIdade() <<", " <<acc->getAltura() <<", " <<acc->getPeso() << ", " << acc->getRg() << std::endl;
-            }
-            else if(acc->getTipo() == 2) { //caso seja atacante
-                std::cout << "Atacante: " << std::endl;
-                std::cout << i << ":" << acc->getIdade() <<", " <<acc->getAltura() <<", " <<acc->getPeso() << ", " << acc->getRg()
-                << acc->getVelocidade()
-            }*/
+        Jogadores* acc = cadastro[i];
+        if(acc != NULL){
+            acc->print();
         }
     }
     std::cout << "FIM" << std::endl;

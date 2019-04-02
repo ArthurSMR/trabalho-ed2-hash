@@ -19,7 +19,7 @@ private:
 	int salto;
 public:
 
-	Goleiro(int tipo = 0, float alt = 0.0, float pes = 0.0, int ida = 0, int numRg = 0, int def = 0, int ref = 0, int sal = 0);
+	Goleiro(float alt = 0.0, float pes = 0.0, int ida = 0, int numRg = 0, int def = 0, int ref = 0, int sal = 0);
 
 	int getDefesa() const;
 	int getReflexo() const;

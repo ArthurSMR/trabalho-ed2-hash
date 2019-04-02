@@ -19,7 +19,7 @@ private:
 	int drible;
 
 public:
-	Atacante(int tipo = 0, float alt = 0.0, float pes = 0.0, int ida = 0, int numRg = 0, int vel = 0, int fin = 0, int dri = 0);
+	Atacante(float alt = 0.0, float pes = 0.0, int ida = 0, int numRg = 0, int vel = 0, int fin = 0, int dri = 0);
 
 	int getVelocidade() const;
 	int getFinalizacao() const;
@@ -28,6 +28,7 @@ public:
 	void setVelocidade(int vel);
 	void setFinalizacao(int fin);
 	void setDrible(int dri);
+	void print();
 
 	Atacante(const Atacante &obj);
 	int getHash(int max_number) const;
